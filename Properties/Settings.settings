@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FunkkModInstaller.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="GameInstallPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">??</Value>
+    </Setting>
+    <Setting Name="EnableEditor" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SteamExecPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">??</Value>
+    </Setting>
+    <Setting Name="LaunchWithSteam" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

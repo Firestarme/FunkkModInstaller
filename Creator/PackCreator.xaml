@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="FunkkModInstaller.Creator.PackCreator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FunkkModInstaller.Creator"
+             xmlns:tree="clr-namespace:FunkkModInstaller.Creator.TreeItems"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Label VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"> Pack Creator </Label>
+        
+        <DockPanel LastChildFill="True" Grid.Row="1">
+            <Label DockPanel.Dock="Left" VerticalAlignment="Center">Pack Directory:</Label>
+            <Button DockPanel.Dock="Right" Width="80" Margin="5">Browse</Button>
+            <TextBox x:Name="TB_Path" Margin="5" Height="30" VerticalContentAlignment="Center" TextWrapping="NoWrap">PATH</TextBox>
+        </DockPanel>
+
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="250"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <GridSplitter Grid.Column="1" Width="3" ResizeBehavior="PreviousAndNext" />
+
+            <TreeView x:Name="TV_PackViewer" Margin="5" Grid.Column="2" SelectedItemChanged="TV_PackViewer_SelectedItemChanged">
+                <TreeView.Resources>
+                    <Style TargetType="{x:Type tree:TreeItem_Pack}">
+                        <Setter Property="TextBlock.FontSize" Value="20"/>
+                        <Setter Property="Margin" Value="4"/>
+                    </Style>
+                </TreeView.Resources>
+            </TreeView>
+
+            <Border Padding="5" BorderThickness="1" BorderBrush="Gray">
+                <ContentControl x:Name="Editor_Area" Margin="5" />
+            </Border>
+
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Margin" Value="5,5,5,5"/>
+                    <Setter Property="Padding" Value="4"/>
+                    <Setter Property="Width" Value="80"/>
+                </Style>
+            </StackPanel.Resources>
+            
+
+            <Button Click="ButtonUpdate_Click">Update</Button>
+            <Button Click="ButtonAdd_Click">Add</Button>
+            <Button Click="ButtonZip_Click">Zip</Button>
+            <Button Click="Button_OpenDir">Open Folder</Button>
+        </StackPanel>
+            
+    </Grid>
+</UserControl>

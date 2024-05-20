@@ -1,0 +1,57 @@
+﻿<Window x:Class="FunkkModInstaller.Utilities.SelectFileDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FunkkModInstaller.Utilities"
+        xmlns:mats="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
+        mc:Ignorable="d"
+        Title="SelectFileDialog" Height="400" Width="600" AllowDrop="True">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <GridSplitter Grid.Column="1"/>
+        <TreeView x:Name="DirViewer" Margin="5"/>
+
+        <Border BorderThickness="1" BorderBrush="Gray" Margin="5" Grid.Column="2">
+            <Grid>
+
+                <local:CopyFileTarget x:Name="DragTarget" FilesCopied="DragTarget_FilesCopied">
+                    <local:CopyFileTarget.Overlay>
+                        <Border BorderThickness="5" CornerRadius="3" BorderBrush="Green" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                            <mats:MaterialIcon Kind="FileDownload" Width="64" Height="64" Foreground="Green"/>
+                        </Border>
+                    </local:CopyFileTarget.Overlay>
+
+                    <ListBox x:Name="FileViewer" SelectionMode="Extended" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="5">
+                                    <Image Source="{Binding Path=IconSrc}" Height="32" Width="32"/>
+                                    <Label Content="{Binding Path=Name}" VerticalContentAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </local:CopyFileTarget>
+            </Grid>
+        </Border>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" Grid.ColumnSpan="34">
+            <Button Style="{DynamicResource DialogButton}" Click="ButtonConfirm_Click">Confirm</Button>
+            <Button Style="{DynamicResource DialogButton}" Click="ButtonCancel_Click">Cancel</Button>
+            <Button Style="{DynamicResource DialogButton}" Click="ButtonBrowse_Click">Browse</Button>
+        </StackPanel>
+    </Grid>
+</Window>

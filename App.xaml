@@ -1,0 +1,90 @@
+﻿<Application x:Class="FunkkModInstaller.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:FunkkModInstaller"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <ResourceDictionary>
+
+            <!--ThemeColors-->
+            <SolidColorBrush x:Key="MainBackground" Color="#FF1B1518" />
+            <SolidColorBrush x:Key="MainBackgroundL" Color="#FF231B1F" />
+            <SolidColorBrush x:Key="MainHighlight" Color="#FF54414B"/>
+
+            <SolidColorBrush x:Key="MainGrey" Color="#FF505050"/>
+            <SolidColorBrush x:Key="Grey3" Color="#FF232323"/>
+            <SolidColorBrush x:Key="Grey2" Color="#FF3C3C3C"/>
+
+            <Style TargetType="{x:Type Label}">
+                <!--<Setter Property="FontFamily" Value="IrisUPC" />-->
+                <Setter Property="FontFamily" Value="Sitka Display Semibold"/>
+            </Style>
+
+            <!--Logo-->
+            
+            <DrawingImage x:Key="LogoDrawing">
+                <DrawingImage.Drawing>
+                    <DrawingGroup ClipGeometry="M0,0 V124.28698 H124.4564 V0 H0 Z">
+                        <DrawingGroup Opacity="1" Transform="1,0,0,1,-32.465718,-83.222189">
+                            <DrawingGroup Opacity="1" Transform="0.96276564,0,0,1.0020424,1.2088402,-0.42382318">
+                                <GeometryDrawing Brush="#FFFF6600" Geometry="F1 M124.4564,124.28698z M0,0z M161.73539,83.475525C114.74087,100.47818,67.015364,77.264125,37.84731,121.19777L37.83781,122.81007 46.376622,122.81007C46.55092,122.80207,46.717339,122.77447,46.894817,122.77447L60.5309,122.77447 72.637128,122.77447C78.717312,122.77447,83.612346,127.55471,83.612346,133.49216L83.612346,134.08747 108.25977,134.08747C115.81201,134.08747,121.89185,140.02492,121.89185,147.39984L121.89185,165.17756 121.89185,191.03438C121.89185,191.06318,121.88485,191.10118,121.88385,191.13048L121.88385,198.8928 124.70964,195.94363C145.56413,165.64575,138.90722,110.17076,161.735,83.475525z" />
+                                <GeometryDrawing Brush="#FFFFCC00" Geometry="F1 M124.4564,124.28698z M0,0z M140.69008,101.37395C110.67465,112.36399,80.223533,98.675154,60.447733,122.93542L72.55396,122.93542C78.63418,122.93542,83.529177,127.71563,83.529177,133.65312L83.529177,134.24843 108.17659,134.24843C115.72889,134.24843,121.80868,140.18581,121.80868,147.56079L121.80868,165.33852C128.86819,144.35345,128.10338,116.26987,140.69008,101.37395z" />
+                                <GeometryDrawing Brush="#FFAD6248" Geometry="F1 M124.4564,124.28698z M0,0z M43.440936,125.93689C37.360795,125.93689,32.465719,130.71716,32.465719,136.65458L32.465719,140.83159 32.465719,150.56226 32.465719,161.06653 32.465719,194.19681C32.465719,201.57169,38.545603,207.50917,46.097795,207.50917L99.478748,207.50917 104.80584,207.50917C112.35804,207.50917,118.43792,201.57169,118.43792,194.19681L118.43792,192.80051 118.43792,185.03819 118.43792,168.33999 118.43792,150.56226C118.43792,143.18738,112.35804,137.24989,104.80584,137.24989L97.377239,137.24989 88.838425,137.24989 80.158421,137.24989 80.158421,136.65458C80.158421,130.71716,75.263349,125.93689,69.183204,125.93689L57.076977,125.93689z" />
+                            </DrawingGroup>
+                        </DrawingGroup>
+                    </DrawingGroup>
+                </DrawingImage.Drawing>
+            </DrawingImage>
+
+            <!--Other-->
+            <SolidColorBrush x:Key="Blue1"  Color="#FF0B7EFF"/>
+            <SolidColorBrush x:Key="Blue2"  Color="#FF00C6F9"/>
+            <SolidColorBrush x:Key="Orange1"  Color="#FFF9A000"/>
+
+            <Style TargetType="Button">
+                <Style.Resources>
+                    <DropShadowEffect x:Key="Shadow1" Direction="220" Opacity="0.2"/>
+                </Style.Resources>
+
+                <Style.Setters>
+                    <Setter Property="Background" Value="{StaticResource Blue1}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <!--<Setter Property="Effect" Value="{DynamicResource Shadow1}"/>-->
+                </Style.Setters>
+
+                <Style.Triggers>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Trigger.Setters>
+                            <Setter Property="Background" Value="Gray"/>
+                        </Trigger.Setters>
+                    </Trigger>
+                    <Trigger Property="IsMouseOver" Value="true">
+                        <Trigger.Setters>
+                            <Setter Property="Background" Value="{StaticResource Blue2}"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                        </Trigger.Setters>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Trigger.Setters>
+                            <Setter Property="Background" Value="{StaticResource Orange1}"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                        </Trigger.Setters>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="Button" x:Key="DialogButton" BasedOn="{StaticResource {x:Type Button}}">
+                <Style.Setters>
+                    <Setter Property="Width" Value="80"/>
+                    <Setter Property="Height" Value="35"/>
+                    <Setter Property="Margin" Value="4"/>
+                </Style.Setters>
+            </Style>
+            
+        </ResourceDictionary>
+    </Application.Resources>
+
+
+</Application>
