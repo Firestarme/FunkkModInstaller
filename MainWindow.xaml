@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FunkkModInstaller"
+        xmlns:util="clr-namespace:FunkkModInstaller.Utilities"
         xmlns:creator="clr-namespace:FunkkModInstaller.Creator"
         xmlns:mats="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
         mc:Ignorable="d"
@@ -62,7 +63,7 @@
             </TabItem>
 
             <TabItem Header="Console" x:Name="ConsoleTab">
-                <local:ConsoleViewer x:Name="CViewer" Margin="10" />
+                <util:SimpleConsoleViewer x:Name="CViewer" Margin="10" />
             </TabItem>
 
             <TabItem Header="Settings" VerticalAlignment="Bottom">

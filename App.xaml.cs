@@ -1,23 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.IO;
-using System.IO.Compression;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
-using System.Text.Json;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows;
-using Valheim_ModInstaller;
-using FunkkModInstaller.JSON;
-using FunkkModInstaller.Properties;
+﻿using FunkkModInstaller.Properties;
+using FunkkModInstaller.Utilities;
+using System;
 using System.Diagnostics;
-using System.ComponentModel;
+using System.IO;
 using System.Reflection;
-using System.Data.SqlTypes;
+using System.Windows;
 
 namespace FunkkModInstaller
 {
@@ -62,7 +49,7 @@ namespace FunkkModInstaller
         //App info
         public static string Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
-        public static Console Console = new Console();
+        public static SimpleConsole Console = new SimpleConsole();
         static Settings AppSettings => Settings.Default;
 
         public App()

@@ -1,30 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace FunkkModInstaller
+namespace FunkkModInstaller.Utilities
 {
     /// <summary>
     /// Interaction logic for Console.xaml
     /// </summary>
-    public partial class ConsoleViewer : UserControl
+    public partial class SimpleConsoleViewer : UserControl
     {
 
-        private Console? _console;
-        public Console? Console
+        private SimpleConsole? _console;
+        public SimpleConsole? Console
         {
             get { return _console; }
             set
@@ -43,7 +31,7 @@ namespace FunkkModInstaller
             }
         }
 
-        public ConsoleViewer()
+        public SimpleConsoleViewer()
         {
             InitializeComponent();
         }
@@ -55,7 +43,7 @@ namespace FunkkModInstaller
 
     }
 
-    public class Console : INotifyPropertyChanged
+    public class SimpleConsole : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace FunkkModInstaller.Creator.TreeItems
@@ -14,5 +10,8 @@ namespace FunkkModInstaller.Creator.TreeItems
 
         public TreeItem_Dependency() { GUID = Guid.NewGuid().ToString(); }
         public TreeItem_Dependency(string gUID) { GUID = gUID; }
+
+
+        //TODO: Implement dependency checking
     }
 }

@@ -1,18 +1,15 @@
-﻿using Microsoft.Win32;
+﻿using FunkkModInstaller.JSON;
+using FunkkModInstaller.Utilities;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using FunkkModInstaller.JSON;
-using FunkkModInstaller.Utilities;
 
 namespace FunkkModInstaller.Creator.TreeItems
 {

@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
 using System.IO.Compression;
-using System.Windows.Markup;
+using FunkkModInstaller.Utilities;
 
 namespace FunkkModInstaller.JSON
 {

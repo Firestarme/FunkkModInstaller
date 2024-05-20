@@ -1,14 +1,13 @@
-﻿using System;
+﻿using FunkkModInstaller.Creator.TreeItems;
+using FunkkModInstaller.JSON;
+using FunkkModInstaller.Utilities;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Windows;
 using System.Windows.Controls;
 using Valheim_ModInstaller.Creator;
-using FunkkModInstaller.Creator.TreeItems;
-using FunkkModInstaller.JSON;
-using FunkkModInstaller.Utilities;
 
 namespace FunkkModInstaller.Creator
 {

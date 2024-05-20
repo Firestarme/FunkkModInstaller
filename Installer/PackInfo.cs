@@ -1,22 +1,16 @@
-﻿using System;
+﻿using FunkkModInstaller.JSON;
+using FunkkModInstaller.Utilities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FunkkModInstaller.JSON;
-using FunkkModInstaller;
 using System.Collections.ObjectModel;
-using FunkkModInstaller.Creator.TreeItems;
-using System.Runtime.CompilerServices;
-using System.Diagnostics.Contracts;
 using System.ComponentModel;
+using System.Linq;
 
-namespace FunkkModInstaller
+namespace FunkkModInstaller.Installer
 {
     public class PackInfo : INotifyPropertyChanged
     {
 
-        public String Name
+        public string Name
         {
             get => JSONObj.ModPackName != null ? JSONObj.ModPackName : "Not Set";
         }
@@ -33,7 +27,7 @@ namespace FunkkModInstaller
             set
             {
                 _IsPackActive = value;
-                if (this.Bepinex != null) { this.Bepinex.IsPackActive = value; }
+                if (Bepinex != null) { Bepinex.IsPackActive = value; }
                 foreach (ModInfo mod in Mods) { mod.IsPackActive = value; }
             }
         }
@@ -75,9 +69,9 @@ namespace FunkkModInstaller
             //populate Mods List
             if (_JSONObj.Mods != null)
             {
-                foreach (var m in _JSONObj.Mods) 
-                { 
-                    var mod  = new ModInfo(m);
+                foreach (var m in _JSONObj.Mods)
+                {
+                    var mod = new ModInfo(m);
                     mod.PropertyChanged += Mod_PropertyChanged;
                     Mods.Add(mod);
                 }
@@ -89,7 +83,7 @@ namespace FunkkModInstaller
         private void Mod_PropertyChanged(object? sender, PropertyChangedEventArgs args)
         {
             if (args.PropertyName != nameof(ModInfo.IsUpdateRequired)) return;
-            foreach (ModInfo mod in this.Mods)
+            foreach (ModInfo mod in Mods)
             {
                 if (mod.IsUpdateRequired) { IsUpdateRequired = true; return; }
                 IsUpdateRequired = false;
@@ -98,7 +92,7 @@ namespace FunkkModInstaller
 
         public PackInfo(JSONReader.JSONDoc JSONObj, string path) : this(JSONObj)
         {
-            this._Path = path;
+            _Path = path;
         }
 
         public static PackInfo CreateWithNoSource(JSONReader.JSONDoc JSONObj)
@@ -108,7 +102,7 @@ namespace FunkkModInstaller
 
         public void SetError(bool isError, string? Message)
         {
-            foreach (ModInfo mod in this.Mods)
+            foreach (ModInfo mod in Mods)
             {
                 mod.IsErrored = isError;
                 mod.Message = Message;
@@ -117,7 +111,7 @@ namespace FunkkModInstaller
 
         public void SetDefaultInstallState()
         {
-            foreach (ModInfo mod in this.Mods)
+            foreach (ModInfo mod in Mods)
             {
                 mod.IsInstallDesired = mod.IsInstalledByDefault;
             }
@@ -125,7 +119,7 @@ namespace FunkkModInstaller
 
         public Dictionary<string, ModInfo> GetModDict()
         {
-            return Mods.ToDictionary((ModInfo m) => { return m.ModID; });
+            return Mods.ToDictionary((m) => { return m.ModID; });
         }
 
     }

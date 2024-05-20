@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FunkkModInstaller.JSON;
+using FunkkModInstaller.Utilities;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Media.Animation;
-using FunkkModInstaller.Creator;
-using FunkkModInstaller.JSON;
-using FunkkModInstaller.Utilities;
 
 namespace FunkkModInstaller.Creator.TreeItems
 {

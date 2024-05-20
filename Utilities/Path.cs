@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace FunkkModInstaller
+namespace FunkkModInstaller.Utilities
 {
     class vPath
     {
@@ -15,9 +15,9 @@ namespace FunkkModInstaller
         public static string Combine(params string[] paths)
         {
 
-            for(int i=0; i<paths.Length; i++)
+            for (int i = 0; i < paths.Length; i++)
             {
-                paths[i] = paths[i].Trim('/','\\');
+                paths[i] = paths[i].Trim('/', '\\');
             }
 
             return System.IO.Path.Combine(paths);
@@ -30,10 +30,10 @@ namespace FunkkModInstaller
 
         public static string? GetFileName(string? path)
         {
-            return System.IO.Path.GetFileName(path); 
+            return System.IO.Path.GetFileName(path);
         }
 
-        public static string? GetRelativePath(string relativeTo,string path)
+        public static string? GetRelativePath(string relativeTo, string path)
         {
             return System.IO.Path.GetRelativePath(relativeTo, path);
         }

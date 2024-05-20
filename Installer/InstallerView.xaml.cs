@@ -1,24 +1,14 @@
-﻿using FunkkModInstaller.JSON;
+﻿using FunkkModInstaller.Installer;
+using FunkkModInstaller.JSON;
+using FunkkModInstaller.Properties;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using Valheim_ModInstaller;
 using System.IO;
 using System.IO.Compression;
-using System.Text.Json;
-using FunkkModInstaller.Properties;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace FunkkModInstaller
 {
@@ -31,7 +21,7 @@ namespace FunkkModInstaller
         private readonly ObservableCollection<PackInfo> _Packs = new ObservableCollection<PackInfo>();
         public ObservableCollection<PackInfo> Packs => _Packs;
 
-        private readonly Installer _installer;
+        private readonly PackInstaller _installer;
         private PackInfo? _SelectedPack;
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -59,7 +49,7 @@ namespace FunkkModInstaller
             Settings.Default.PropertyChanged += Settings_PropertyChanged;
 
             //Create Installer
-            _installer = new Installer();
+            _installer = new PackInstaller();
             InitializeInstaller();
 
             //Setup DragTarget

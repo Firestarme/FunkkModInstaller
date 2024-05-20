@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FunkkModInstaller.JSON;
+using System;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Nodes;
-using System.Threading.Tasks;
-using System.Windows.Documents;
-using FunkkModInstaller.JSON;
 
-namespace FunkkModInstaller
+namespace FunkkModInstaller.Installer
 {
     public class ModInfo : INotifyPropertyChanged
     {
@@ -22,35 +16,35 @@ namespace FunkkModInstaller
         private bool _isInstallDesired;
         private bool _IsPackActive;
 
-        public bool IsInstalled 
-        { 
-            get => _isInstalled; 
-            set 
-            { 
-                _isInstalled = value; 
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsInstalled)));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsUpdateRequired)));
-            } 
-        }
-        public bool IsErrored 
-        { 
-            get => _isErrored; 
+        public bool IsInstalled
+        {
+            get => _isInstalled;
             set
             {
-                _isErrored = value; 
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsErrored))); 
-            } 
+                _isInstalled = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsInstalled)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsUpdateRequired)));
+            }
+        }
+        public bool IsErrored
+        {
+            get => _isErrored;
+            set
+            {
+                _isErrored = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsErrored)));
+            }
         }
         public bool IsInstallDesired
-        { 
+        {
             get
             {
                 if (IsRequired) return true;
                 return _isInstallDesired;
             }
-            set 
+            set
             {
-                _isInstallDesired = value; 
+                _isInstallDesired = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsInstallDesired)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsUpdateRequired)));
             }
@@ -103,13 +97,13 @@ namespace FunkkModInstaller
 
         public JSONMod JSONObj => _JSONObj;
 
-        public String ModName => _JSONObj.Name != null ? _JSONObj.Name : "Not Set";
-        public String Description => _JSONObj.Description != null ? _JSONObj.Description : "Not Set";
-        public String Version => _JSONObj.Version != null ? _JSONObj.Version : "Not Set";
+        public string ModName => _JSONObj.Name != null ? _JSONObj.Name : "Not Set";
+        public string Description => _JSONObj.Description != null ? _JSONObj.Description : "Not Set";
+        public string Version => _JSONObj.Version != null ? _JSONObj.Version : "Not Set";
 
-        public ModInfo(JSONMod JSONObj) 
+        public ModInfo(JSONMod JSONObj)
         {
-            this._JSONObj = JSONObj;
+            _JSONObj = JSONObj;
         }
     }
 
@@ -129,8 +123,8 @@ namespace FunkkModInstaller
         //}
 
         public ModInfoBepinex(JSONMod JSONObj) : base(JSONObj)
-        { 
-            this.IsInstallDesired = true;
+        {
+            IsInstallDesired = true;
             this.JSONObj.IsRequired = true;
         }
     }
@@ -140,10 +134,10 @@ namespace FunkkModInstaller
     [Flags]
     public enum ModStatus
     {
-        Installed =          0b_0000_0001,
-        ChangeRequested =    0b_0000_0010,
-        InstallRequested =   0b_0000_0010,
+        Installed = 0b_0000_0001,
+        ChangeRequested = 0b_0000_0010,
+        InstallRequested = 0b_0000_0010,
         UninstallRequested = 0b_0000_0011,
-        PackActive =         0b_0000_0100,
+        PackActive = 0b_0000_0100,
     }
 }

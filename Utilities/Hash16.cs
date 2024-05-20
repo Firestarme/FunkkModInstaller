@@ -7,7 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 
-namespace FunkkModInstaller
+namespace FunkkModInstaller.Utilities
+
 {
     public struct Hash16
     {

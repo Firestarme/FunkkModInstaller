@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FunkkModInstaller"
              xmlns:utils="clr-namespace:FunkkModInstaller.Utilities"
+             xmlns:install="clr-namespace:FunkkModInstaller.Installer"
              xmlns:mats="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
              xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
              mc:Ignorable="d" 
@@ -36,7 +37,7 @@
                 <Button x:Name="Button_Update" Grid.Row="0" Margin="10,5,10,10" Height="40" Click="Button_Update_Click">ERROR</Button>
                 <ComboBox x:Name="CombiBox_SelectPack" Grid.Row="1" Margin="10,5,10,10" Height="40" ItemsSource="{Binding Packs}" SelectedItem="{Binding SelectedPack}" SelectionChanged="CombiBox_SelectPack_SelectionChanged">
                     <ComboBox.ItemTemplate>
-                        <DataTemplate DataType="{x:Type local:PackInfo}">
+                        <DataTemplate DataType="{x:Type install:PackInfo}">
                             <Label Content="{Binding Path=Name}" FontSize="14"/>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
@@ -153,7 +154,7 @@
 
     <UserControl.Resources>
 
-        <DataTemplate DataType="{x:Type local:ModInfo}" x:Key="ModInfoTemplate">
+        <DataTemplate DataType="{x:Type install:ModInfo}" x:Key="ModInfoTemplate">
 
             <Grid Margin="5">
 

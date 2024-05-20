@@ -1,39 +1,33 @@
-﻿using Microsoft.WindowsAPICodePack.Shell.Interop;
+﻿using FunkkModInstaller.JSON;
+using FunkkModInstaller.Utilities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
-using System.Xml;
-using FunkkModInstaller.JSON;
 
-namespace FunkkModInstaller
+namespace FunkkModInstaller.Installer
 {
-    class Installer
+    class PackInstaller
     {
 
-        public const String PersistentFilePath = "FML_PERSISTENT.json";
+        public const string PersistentFilePath = "FML_PERSISTENT.json";
 
-        private String _StagingDirectory = "??";
-        private String _GameDirectory = "??";
-        public String StagingDirectory => _StagingDirectory;
-        public String GameDirectory => _GameDirectory;
+        private string _StagingDirectory = "??";
+        private string _GameDirectory = "??";
+        public string StagingDirectory => _StagingDirectory;
+        public string GameDirectory => _GameDirectory;
 
         private PackInfo? _ActivePack;
         public PackInfo? ActivePack => _ActivePack;
 
         public bool IsUpdateRequired => _ActivePack != null ? _ActivePack.IsUpdateRequired : false;
 
-        public Installer() { }
+        public PackInstaller() { }
 
         private void SetActivePack(PackInfo? pack)
         {
-            if(ActivePack != null) ActivePack.IsPackActive = false;
-            if(pack != null) pack.IsPackActive = true;
+            if (ActivePack != null) ActivePack.IsPackActive = false;
+            if (pack != null) pack.IsPackActive = true;
 
             _ActivePack = pack;
         }
@@ -50,7 +44,7 @@ namespace FunkkModInstaller
             {
                 var new_moddict = pack.GetModDict();
 
-                foreach (var mod in ActivePack.Mods) 
+                foreach (var mod in ActivePack.Mods)
                 {
                     new_moddict[mod.ModID].IsInstallDesired = mod.IsInstalled;
                     new_moddict[mod.ModID].IsInstalled = mod.IsInstalled;
@@ -62,7 +56,7 @@ namespace FunkkModInstaller
         public void SetGameDir(string game_path)
         {
             App.Console.PrintLn($"Setting game directory to: {game_path}");
-            this._GameDirectory = game_path;
+            _GameDirectory = game_path;
             SetActivePack(null);
 
             string full_persistent_path = vPath.Combine(GameDirectory, PersistentFilePath);
@@ -81,7 +75,7 @@ namespace FunkkModInstaller
 
         public void SetStagingDirectory(string staging_path)
         {
-            this._StagingDirectory = staging_path;
+            _StagingDirectory = staging_path;
         }
 
         public void UninstallPack()
@@ -167,7 +161,8 @@ namespace FunkkModInstaller
             App.Console.PrintLn($"Installing Pack: {pack.Name}");
 
             //Install Bepinex
-            if (pack.Bepinex != null) {
+            if (pack.Bepinex != null)
+            {
 
                 InstallMod(pack.Bepinex);
 
@@ -181,9 +176,10 @@ namespace FunkkModInstaller
 
             foreach (ModInfo mod in ActivePack.Mods)
             {
-                if (!mod.IsUpdateRequired) {
+                if (!mod.IsUpdateRequired)
+                {
                     App.Console.CR();
-                    App.Console.PrintLn(1, $"> Skipping Mod: {mod.ModName}"); 
+                    App.Console.PrintLn(1, $"> Skipping Mod: {mod.ModName}");
                     sucessful_mods++;
                     continue;
                 }
@@ -230,7 +226,7 @@ namespace FunkkModInstaller
             }
 
             App.Console.PrintLn(ActivePack.Name);
-            if (ActivePack.Bepinex !=  null)
+            if (ActivePack.Bepinex != null)
             {
                 VerifyModInstallation(ActivePack.Bepinex);
             }
@@ -257,38 +253,6 @@ namespace FunkkModInstaller
                 mod.IsInstallDesired = mod.IsInstalled;
             }
         }
-
-        //public bool CheckIsUpdateRequired()
-        //{
-        //    //dont need to update if no pack is selected
-        //    if (ActivePack == null)
-        //    {
-        //        _IsUpdateRequired = false;
-        //        return false;
-        //    }
-
-        //    //update is needed if bepinex requires update
-        //    if(ActivePack.Bepinex != null)
-        //    {
-        //        if(ActivePack.Bepinex.IsUpdateRequired)
-        //        {
-        //            _IsUpdateRequired = true;
-        //            return true;
-        //        }
-        //    }
-
-        //    //check mods for update status
-        //    foreach (ModInfo mod in ActivePack.Mods)
-        //    {
-        //        if (mod.IsUpdateRequired) { 
-        //            _IsUpdateRequired = true; 
-        //            return true;
-        //        }
-        //    }
-
-        //    _IsUpdateRequired = false;
-        //    return false;
-        //}
 
         //##### Directory Structure Methods ######
 
@@ -366,9 +330,9 @@ namespace FunkkModInstaller
             App.Console.PrintLn(loglv, $"> Uninstalling Mod: {mod.ModName}");
 
             //Check Root Paths
-            if (!Directory.Exists(this.GameDirectory))
+            if (!Directory.Exists(GameDirectory))
             {
-                App.Console.Print($" ... FAIL: Cant Find Game Directory at: {this.GameDirectory} ");
+                App.Console.Print($" ... FAIL: Cant Find Game Directory at: {GameDirectory} ");
                 return;
             }
 
@@ -435,21 +399,21 @@ namespace FunkkModInstaller
 
 
             //Check Root Paths
-            if (!Directory.Exists(this.GameDirectory))
+            if (!Directory.Exists(GameDirectory))
             {
-                App.Console.Print($" ... FAIL: Cant Find Game Directory at: {this.GameDirectory} ");
+                App.Console.Print($" ... FAIL: Cant Find Game Directory at: {GameDirectory} ");
                 return;
             }
 
-            if (!Directory.Exists(this.StagingDirectory))
+            if (!Directory.Exists(StagingDirectory))
             {
-                App.Console.Print($" ... FAIL: Cant Find Staging Directory at: {this.StagingDirectory} ");
+                App.Console.Print($" ... FAIL: Cant Find Staging Directory at: {StagingDirectory} ");
                 return;
             }
 
             //Create Directory Structure
             if (mod.JSONObj.Targets != null)
-            { 
+            {
                 foreach (var tgt in mod.JSONObj.Targets)
                 {
                     CreateDirectoryStructure(tgt);
@@ -518,9 +482,9 @@ namespace FunkkModInstaller
             App.Console.PrintLn(loglv, $"> Verifying Mod Install: {mod.ModName}");
 
             //Check Root Paths
-            if (!Directory.Exists(this.GameDirectory))
+            if (!Directory.Exists(GameDirectory))
             {
-                App.Console.Print($" ... FAIL: Cant Find Game Directory at: {this.GameDirectory} ");
+                App.Console.Print($" ... FAIL: Cant Find Game Directory at: {GameDirectory} ");
                 return;
             }
 
@@ -545,7 +509,7 @@ namespace FunkkModInstaller
             }
 
             //Finish up
-            mod.IsInstalled = (manifest_files == installed_files);
+            mod.IsInstalled = manifest_files == installed_files;
             App.Console.PrintLn(loglv, $"{mod.ModName} Installed: {mod.IsInstalled}");
         }
 
@@ -559,9 +523,9 @@ namespace FunkkModInstaller
             App.Console.CR();
             App.Console.PrintLn(loglv, $"> Verifying Mod Source: {mod.ModName}");
 
-            if (!Directory.Exists(this.StagingDirectory))
+            if (!Directory.Exists(StagingDirectory))
             {
-                App.Console.Print($" ... FAIL: Cant Find Staging Directory at: {this.StagingDirectory} ");
+                App.Console.Print($" ... FAIL: Cant Find Staging Directory at: {StagingDirectory} ");
                 return;
             }
 
@@ -583,7 +547,7 @@ namespace FunkkModInstaller
             }
 
             //Finish up
-            mod.IsInstalled = (manifest_files == src_files);
+            mod.IsInstalled = manifest_files == src_files;
         }
 
         private IEnumerable<TargetFilePair> IterateModfiles(ModInfo mod)
@@ -600,16 +564,6 @@ namespace FunkkModInstaller
             }
         }
 
-        //Event handlers
-        //private void OnModPropertyChanged(object? sender, PropertyChangedEventArgs args)
-        //{
-        //    if (args.PropertyName == nameof(ModInfo.IsInstallDesired))
-        //    {
-        //        this.CheckIsUpdateRequired();
-        //    }
-
-        //}
-
         private struct TargetFilePair
         {
             public JSONTarget Target;
@@ -617,22 +571,22 @@ namespace FunkkModInstaller
 
 
             //Source Paths
-            public String GetSourceFilePath(string StagingDirectory)
+            public string GetSourceFilePath(string StagingDirectory)
             {
                 if (File.SrcPath == null) return "??";
                 return vPath.Combine(StagingDirectory, File.SrcPath);
             }
 
             //Destination Paths
-            public String GetDestinationDirPath(string GameDirectory)
+            public string GetDestinationDirPath(string GameDirectory)
             {
                 if (Target.DestDirPath == null) return "??";
                 return vPath.Combine(GameDirectory, Target.DestDirPath);
             }
-            public String GetDestinationFilePath(string GameDirectory)
+            public string GetDestinationFilePath(string GameDirectory)
             {
                 if (File.Filename == null) return "??";
-                return vPath.Combine(this.GetDestinationDirPath(GameDirectory), File.Filename);
+                return vPath.Combine(GetDestinationDirPath(GameDirectory), File.Filename);
             }
 
 
