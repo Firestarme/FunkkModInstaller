@@ -32,7 +32,6 @@ namespace FunkkModInstaller
         //Game Info
         public static string TgtGameExecutable = "valheim.exe";
         public static string DefaultTgtGamePath = vPath.Combine(SteamLibPath, TgtGameSteamName);
-        //public static string DefaultTgtGamePath = @"C:\Users\samue\OneDrive\Desktop\ValheimTEST";
 
         //Installer Paths
         public static string InstallerDirectoryPath = ApplicationPath;
