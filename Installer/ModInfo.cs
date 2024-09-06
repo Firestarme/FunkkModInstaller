@@ -1,4 +1,4 @@
-﻿using FunkkModInstaller.JSON;
+﻿using FunkkMI_Common.JSON;
 using System;
 using System.ComponentModel;
 

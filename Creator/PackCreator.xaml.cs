@@ -1,5 +1,4 @@
 ﻿using FunkkModInstaller.Creator.TreeItems;
-using FunkkModInstaller.JSON;
 using FunkkModInstaller.Utilities;
 using System;
 using System.Collections.Generic;
@@ -8,6 +7,9 @@ using System.IO.Compression;
 using System.Windows;
 using System.Windows.Controls;
 using Valheim_ModInstaller.Creator;
+using FunkkMI_Common;
+using FunkkMI_Common.Utilities;
+using FunkkMI_Common.JSON;
 
 namespace FunkkModInstaller.Creator
 {

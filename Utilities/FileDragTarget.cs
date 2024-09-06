@@ -1,5 +1,5 @@
 ﻿using FunkkModInstaller.Installer;
-using FunkkModInstaller.JSON;
+using FunkkMI_Common.JSON;
 using System;
 using System.IO;
 using System.IO.Compression;

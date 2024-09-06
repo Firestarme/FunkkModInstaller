@@ -1,5 +1,6 @@
 ﻿using FunkkModInstaller.Installer;
-using FunkkModInstaller.JSON;
+using FunkkMI_Common.JSON;
+using FunkkMI_Common;
 using FunkkModInstaller.Properties;
 using System;
 using System.Collections.ObjectModel;

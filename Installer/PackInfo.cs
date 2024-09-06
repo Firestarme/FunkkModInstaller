@@ -1,9 +1,10 @@
-﻿using FunkkModInstaller.JSON;
-using FunkkModInstaller.Utilities;
+﻿using FunkkModInstaller.Utilities;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using FunkkMI_Common;
+using FunkkMI_Common.JSON;
 
 namespace FunkkModInstaller.Installer
 {

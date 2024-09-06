@@ -1,4 +1,4 @@
-﻿using FunkkModInstaller.Utilities;
+﻿using FunkkMI_Common.Utilities;
 using System;
 
 namespace FunkkModInstaller.Creator

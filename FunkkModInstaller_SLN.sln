@@ -5,6 +5,10 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunkkModInstaller", "FunkkModInstaller.csproj", "{268FD9D5-0D1A-4259-A9D9-E6D6BEEC8B02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunkkMI_Server", "..\FunkkMI_Server\FunkkMI_Server.csproj", "{C94BD908-10B2-4C85-BC59-3D5394C3F2F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunkkMI_Common", "..\FunkkMI_Common\FunkkMI_Common.csproj", "{AB368EDD-7DFF-4A51-84AC-9D79CC54EAC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{268FD9D5-0D1A-4259-A9D9-E6D6BEEC8B02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{268FD9D5-0D1A-4259-A9D9-E6D6BEEC8B02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{268FD9D5-0D1A-4259-A9D9-E6D6BEEC8B02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C94BD908-10B2-4C85-BC59-3D5394C3F2F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C94BD908-10B2-4C85-BC59-3D5394C3F2F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C94BD908-10B2-4C85-BC59-3D5394C3F2F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C94BD908-10B2-4C85-BC59-3D5394C3F2F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB368EDD-7DFF-4A51-84AC-9D79CC54EAC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB368EDD-7DFF-4A51-84AC-9D79CC54EAC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB368EDD-7DFF-4A51-84AC-9D79CC54EAC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB368EDD-7DFF-4A51-84AC-9D79CC54EAC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
