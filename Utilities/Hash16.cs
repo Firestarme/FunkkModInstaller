@@ -18,7 +18,7 @@ namespace FunkkModInstaller.Utilities
         private Hash16(byte[] hash) { this.hash = hash; }
 
 
-        public static  Hash16 FromString(string data)
+        public static Hash16 ComputeHashFromString(string data)
         {
             byte[] bytes;
             using (HashAlgorithm HA = MD5.Create())
@@ -29,9 +29,15 @@ namespace FunkkModInstaller.Utilities
             return new Hash16(bytes);
         }
 
+        public static Hash16 ReadString(string hash)
+        {
+            byte[] bytes = System.Convert.FromHexString(hash);
+            return new Hash16(bytes);
+        }
+
         public override string ToString()
         {
-            return Encoding.UTF8.GetString(hash);
+           return System.Convert.ToHexString(hash);
         }
 
         public override bool Equals(object? obj)

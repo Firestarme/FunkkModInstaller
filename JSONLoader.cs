@@ -61,7 +61,7 @@ namespace FunkkModInstaller.JSON
             {
                 string data = readfunc.Invoke();
                 _doc = JsonSerializer.Deserialize<JSONModPack>(data);
-                _hash = Hash16.FromString(data);
+                _hash = Hash16.ComputeHashFromString(data);
             }
             catch (Exception ex) 
             {
